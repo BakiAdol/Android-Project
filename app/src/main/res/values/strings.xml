@@ -1,0 +1,88 @@
+<resources>
+    <string name="app_name">Assembly Problems and Solution</string>
+    <string name="action_settings">Settings</string>
+    <string name="problems">Problems</string>
+
+    <string name="start_code">.MODEL SMALL\n.STACK 100H\n\n.DATA\n</string>
+    <string name="end_code">\n\nMOV AH,4CH\nINT 21H\n\nMAIN ENDP\nEND MAIN\n</string>
+
+    <string name="read_and_display_character">Read and display a character</string>
+    <string name="print_a_line">Display a line</string>
+    <string name="add_two_numbers">Addition two numbers</string>
+    <string name="sub_two_numbers">Subtraction two numbers</string>
+    <string name="check_5_not">Read a number and check it\'s equal, grater or less then 5</string>
+    <string name="check_range_or_not">Read a number and check within range 3 to 7 or not</string>
+    <string name="print_zero_to_none">Print 0 to 9</string>
+    <string name="print_A_to_Z">Print A to Z</string>
+    <string name="print_a_to_z">Print a to z</string>
+    <string name="read_upper_print_lower">Read uppercase character and print lowercase</string>
+    <string name="read_lower_print_upper">Read lowercase character and print uppercase</string>
+    <string name="check_upper_or_lower">Read a characther and check it\'s uppercase or lowercase</string>
+    <string name="print_pattern_1">Print 10*10 stars(*)</string>
+    <string name="print_pattern_2">A\n\tB\n\t\tC</string>
+    <string name="print_pattern_3">123\n456\n789</string>
+    <string name="div_single">Division(Single Digit)</string>
+    <string name="mul_single">Multiplication(Single Digit)</string>
+    <string name="add_double">Addition(Single digit input double digit output)</string>
+    <string name="mul_double">Multiplication(Single digit input double digit output)</string>
+    <string name="reverse_string">Read a string and print it\'s reverse</string>
+    <string name="print_binary_value">Read a character and print it\'s ASCII code in binary</string>
+    <string name="count_one_bits">Count number of 1 bit\'s</string>
+    <string name="count_zero_bits">Count number of 0 bit\'s</string>
+
+
+    <string-array name="problems_name_list">
+        <item>@string/read_and_display_character</item>
+        <item>@string/print_a_line</item>
+        <item>@string/add_two_numbers</item>
+        <item>@string/sub_two_numbers</item>
+        <item>@string/check_5_not</item>
+        <item>@string/check_range_or_not</item>
+        <item>@string/print_zero_to_none</item>
+        <item>@string/print_A_to_Z</item>
+        <item>@string/print_a_to_z</item>
+        <item>@string/read_upper_print_lower</item>
+        <item>@string/read_lower_print_upper</item>
+        <item>@string/check_upper_or_lower</item>
+        <item>@string/print_pattern_1</item>
+        <item>@string/print_pattern_2</item>
+        <item>@string/print_pattern_3</item>
+        <item>@string/div_single</item>
+        <item>@string/mul_single</item>
+        <item>@string/add_double</item>
+        <item>@string/mul_double</item>
+        <item>@string/reverse_string</item>
+        <item>@string/print_binary_value</item>
+        <item>@string/count_one_bits</item>
+        <item>@string/count_zero_bits</item>
+    </string-array>
+
+
+    <string-array name="solve_details">
+        <item>.CODE\n.MAIN PROC\n\nMOV AH,1\nINT 21H\nMOV DL,AL\n\nMOV AH,2\nINT 21H</item>
+        <item>\tvar DB \'Assembly Problems and Solve$\'\n\n.CODE\n.MAIN PROC\n\nMOV AX,@DATA\nMOV DS,AX\n\nLEA DX,var\nMOV AH,9\nINT 21H</item>
+        <item>\tfirst DB \'Enter a number : $\'\n\tsecond DB 0AH, 0DH, \'Enter another number : $\'\n\tsumis DB 0AH, 0DH, \'The Sum is : $\'\n\n.CODE\n.MAIN PROC\n\nMOV AX,@DATA\nMOV DS,AX\n\nLEA DX,first\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\nMOV DL,AL\n\nLEA DX,second\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\n\nADD DL,AL\nSUB DL,48\n\nLEA DX,sumis\nMOV AH,9\nINT 21H\n\nMOV AH,2\nINT 21H</item>
+        <item>\tfirst DB \'Enter a number : $\'\n\tsecond DB 0AH, 0DH, \'Enter another number : $\'\n\tresultis DB 0AH, 0DH, \'The Result is : $\'\n\n.CODE\n.MAIN PROC\n\nMOV AX,@DATA\nMOV DS,AX\n\nLEA DX,first\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\nMOV DL,AL\n\nLEA DX,second\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\n\nSUB DL,AL\nADD DL,48\n\nLEA DX,resultis\nMOV AH,9\nINT 21H\n\nMOV AH,2\nINT 21H</item>
+        <item>\tnum DB \'Enter a number : $\'\n\teql DB 0AH, 0DH, \'Equal$\'\n\tless DB 0AH, 0DH, \'Less$\'\n\tgrt DB 0AH, 0DH, \'Grater$\'\n\n.CODE\n.MAIN PROC\n\nMOV AX,@DATA\nMOV DS,AX\n\nLEA DX,num\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\nMOV BL,AL\n\nCMP BL,5H\nJG LBL_GRT\nJL LBL_LESS\n\nLEA DX,eql\nMOV AH,9\nINT 21H\nJMP EXIT\n\nLBL_GRT:\nLEA DX,grt\nMOV AH,9\nINT 21H\nJMP EXIT\n\nLBL_LESS:\nLEA DX,less\nMOV AH,9\nINT 21H\n\nEXIT:</item>
+        <item>\tnum DB \'Enter a number : $\'\n\trng DB 0AH, 0DH, \'In Range$\'\n\tnrng DB 0AH, 0DH, \'Out Of Rnage$\'\n\n.CODE\n.MAIN PROC\n\nMOV AX,@DATA\nMOV DS,AX\n\nLEA DX,num\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\nMOV BL,AL\n\nCMP BL,3H\nJGE LBL_NXT\nJMP LBL_NRNG\n\nLBL_NXT:\nCMP BL,7H\nJG LBL_NRNG\n\nLEA DX,rng\nMOV AH,9\nINT 21H\nJMP EXIT\n\nLBL_NRNG:\nLEA DX,nrng\nMOV AH,9\nINT 21H</item>
+        <item>.CODE\n.MAIN PROC\n\nMOV CX,10\nMOV BL,\'0\'\n\nMOV AH,2\n\nLBL:\nMOV DL,BL\nINT 21H\nINC BL\n\nMOV DL,0AH\nINT 21H\nMOV DL,0DH\nINT 21H\n\nLOOP LBL</item>
+        <item>.CODE\n.MAIN PROC\n\nMOV CX,26\nMOV BL,\'A\'\n\nMOV AH,2\n\nLBL:\nMOV DL,BL\nINT 21H\nINC BL\n\nMOV DL,0AH\nINT 21H\nMOV DL,0DH\nINT 21H\n\nLOOP LBL</item>
+        <item>.CODE\n.MAIN PROC\n\nMOV CX,26\nMOV BL,\'a\'\n\nMOV AH,2\n\nLBL:\nMOV DL,BL\nINT 21H\nINC BL\n\nMOV DL,0AH\nINT 21H\nMOV DL,0DH\nINT 21H\n\nLOOP LBL</item>
+        <item>\tchr DB \'Enter a Uppercase Character : $\'\n\tlw DB 0AH, 0DH, \'Lowercase Character is \'\n\tcchr DB ?\n\tstp DB \'$\'\n\n.CODE\n.MAIN PROC\n\nMOV AX,@DATA\nMOV DS,AX\n\nLEA DX,chr\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\nADD AL,32\nMOV cchr,AL\n\nLEA DX,lw\nMOV AH,9\nINT 21H</item>
+        <item>\tchr DB \'Enter a Lowercase Character : $\'\n\tupc DB 0AH, 0DH, \'Uppercase Character is \'\n\tcchr DB ?\n\tstp DB \'$\'\n\n.CODE\n.MAIN PROC\n\nMOV AX,@DATA\nMOV DS,AX\n\nLEA DX,chr\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\nSUB AL,32\nMOV cchr,AL\n\nLEA DX,upc\nMOV AH,9\nINT 21H</item>
+        <item>\tchr DB \'Enter a Character : $\'\n\tup DB 0AH, 0DH, \'Uppercase$\'\n\tlw DB 0AH, 0DH, \'Lowercase$\'\n\n.CODE\n.MAIN PROC\n\nMOV AX,@DATA\nMOV DS,AX\n\nLEA DX,chr\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\nMOV BL,AL\n\nCMP BL,\'a\'\nJGE LBL_LOWER\n\nLEA DX,up\nMOV AH,9\nINT 21H\nJMP EXIT\n\nLBL_LOWER:\nLEA DX,lw\nMOV AH,9\nINT 21H\n\nEXIT:</item>
+        <item>.CODE\n.MAIN PROC\n\nMOV CX,10\n\nLBL_OUTER:\nMOV BL,\'0\'\nMOV DL,\'*\'\nMOV AH,2\n\nLBL_INNER:\nINT 21H\nINC BL\nCMP BL,\'9\'\nJNG LBL_INNER\n\nMOV DL,0AH\nINT 21H\nMOV DL,0DH\nINT 21H\n\nLOOP LBL_OUTER</item>
+        <item>\ta DB \'A\'\n\tb DB 0AH, 0DH, \' B\'\n\tc DB 0AH, 0DH, \'  C$\'\n\n.CODE\n.MAIN PROC\n\nMOV AX,@DATA\nMOV DS,AX\n\nLEA DX,a\nMOV AH,9\nINT 21H</item>
+        <item>.CODE\n.MAIN PROC\n\nMOV CX,3\nMOV BL,\'1\'\n\nLBL_OUTER:\nMOV BH,\'1\'\nMOV AH,2\n\nLBL_INNER:\nMOV DL,BL\nINT 21H\nINC BL\nINC BH\nCMP BH,\'3\'\nJNG LBL_INNER\n\nMOV DL,0AH\nINT 21H\nMOV DL,0DH\nINT 21H\nLOOP LBL_OUTER</item>
+        <item>\tfirst DB \'Enter a number(Divisor) : $\'\n\tsecond DB 0AH, 0DH, \'Enter another number(Dividend) : $\'\n\tresult DB 0AH, 0DH, \'Quotient is : $\'\t\nreminder DB 0AH, 0DH, \'Reminder is : $\'\n.CODE\n.MAIN PROC\n\nMOV AX,@DATA\nMOV DS,AX\n\nLEA DX,first\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\nMOV BH,AL\nSUB BH,48\n\n\nLEA DX,second\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\nMOV BL,AL\nSUB BL,48\n\nMOV AH,0\nMOV AL,BL\n\nDIV BH\n\nMOV BX,AX\nADD BH,48\nADD BL,48\n\nLEA DX,result\nMOV AH,9\nINT 21H\n\nMOV DL,BL\nMOV AH,2\nINT 21H\n\nLEA DX, reminder\nMOV AH,9\nINT 21H\n\nMOV DL,BH\nMOV AH,2\nINT 21H</item>
+        <item>\tfirst DB \'Enter a number : $\'\n\tsecond DB 0AH, 0DH, \'Enter another number : $\'\n\tresult DB 0AH, 0DH, \'Product is : $\'\n\n.CODE\n.MAIN PROC\n\nMOV AX,@DATA\nMOV DS,AX\n\nLEA DX,first\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\nMOV BH,AL\nSUB BH,48\n\nLEA DX,second\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\nMOV BL,AL\nSUB BL,48\n\nLEA DX,result\nMOV AH,9\nINT 21H\n\nMOV AL,BL\nMUL BH\n\nADD AL,48\nMOV BL,AL\n\nMOV AH,2\nMOV DL,AL\nINT 21H</item>
+        <item>\tfirst DB \'Enter a number : $\'\n\tsecond DB 0AH, 0DH, \'Enter another number : $\'\n\tresult DB 0AH, 0DH, \'Result is : \'\n\thiv DB ?\n\tlwv DB ?\n\tnd DB \'$\'\n\n.CODE\n.MAIN PROC\n\nMOV AX,@DATA\nMOV DS,AX\n\nLEA DX,first\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\nMOV BL,AL\nSUB BL,48\n\nLEA DX,second\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\nSUB AL,48\n\nMOV AH,0\nADD AL,BL\nAAA\nADD AH,48\nADD AL,48\n\nMOV hiv,AH\nMOV lwv,AL\n\nLEA DX,result\nMOV AH,9\nINT 21H</item>
+        <item>\tfirst DB \'Enter a number : $\'\n\tsecond DB 0AH, 0DH, \'Enter another number : $\'\n\tresult DB 0AH, 0DH, \'Product is : $\'\n\n.CODE\n.MAIN PROC\n\nMOV AX,@DATA\nMOV DS,AX\n\nLEA DX,first\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\nMOV BH,AL\nSUB BH,48\n\nLEA DX,second\nMOV AH,9\nINT 21H\n\nMOV AH,1\nINT 21H\nMOV BL,AL\nSUB BL,48\n\nLEA DX,result\nMOV AH,9\nINT 21H\n\nMOV AL,BL\nMUL BH\nAAM\n\nMOV CX,AX\nADD CH,48\nADD CL,48\n\nMOV AH,2\nMOV DL,CH\nINT 21H\n\nMOV DL,CL\nINT 21H</item>
+        <item>.MODEL SMALL\n.STACK 100H\n\n.DATA\n</item>
+        <item>.MODEL SMALL\n.STACK 100H\n\n.DATA\n</item>
+        <item>.MODEL SMALL\n.STACK 100H\n\n.DATA\n</item>
+        <item>.MODEL SMALL\n.STACK 100H\n\n.DATA\n</item>
+
+    </string-array>
+
+</resources>
